@@ -17,7 +17,7 @@ public final class ConfigHelper {
    *
    * @return
    */
-  private static String getJdbcDriver() {
+  public static String getJdbcDriver() {
     return PropsUtil.getString(CONFIG_PROPS, ConfigConstant.JDBC_DRIVER);
   }
 
@@ -26,7 +26,7 @@ public final class ConfigHelper {
    *
    * @return
    */
-  private static String getJdbcUrl() {
+  public static String getJdbcUrl() {
     return PropsUtil.getString(CONFIG_PROPS, ConfigConstant.JDBC_URL);
   }
 
@@ -35,7 +35,7 @@ public final class ConfigHelper {
    *
    * @return
    */
-  private static String getJdbcUsername() {
+  public static String getJdbcUsername() {
     return PropsUtil.getString(CONFIG_PROPS, ConfigConstant.JDBC_USERNAME);
   }
 
@@ -44,7 +44,7 @@ public final class ConfigHelper {
    *
    * @return
    */
-  private static String getJdbcPassword() {
+  public static String getJdbcPassword() {
     return PropsUtil.getString(CONFIG_PROPS, ConfigConstant.JDBC_PASSWORD);
   }
 
@@ -53,7 +53,7 @@ public final class ConfigHelper {
    *
    * @return
    */
-  private static String getAppBasePackage() {
+  public static String getAppBasePackage() {
     return PropsUtil.getString(CONFIG_PROPS, ConfigConstant.APP_BASE_PACKAGE);
   }
 
@@ -62,7 +62,7 @@ public final class ConfigHelper {
    *
    * @return
    */
-  private static String getAppJspPath() {
+  public static String getAppJspPath() {
     return PropsUtil.getString(CONFIG_PROPS, ConfigConstant.APP_JSP_PATH, "/WEB-INF/view/");
   }
 
@@ -71,7 +71,7 @@ public final class ConfigHelper {
    *
    * @return
    */
-  private static String getAppAssetPath() {
+  public static String getAppAssetPath() {
     return PropsUtil.getString(CONFIG_PROPS, ConfigConstant.APP_ASSET_PATH, "/asset/");
   }
 }

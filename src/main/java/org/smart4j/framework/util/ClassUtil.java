@@ -17,7 +17,7 @@ import org.slf4j.LoggerFactory;
  * Created by 28016 on 2017/11/21.
  * 类操作工具类
  */
-public class ClassUtil {
+public final class ClassUtil {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(ClassUtil.class);
 
