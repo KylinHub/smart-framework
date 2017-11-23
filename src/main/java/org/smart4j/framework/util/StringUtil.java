@@ -30,4 +30,15 @@ public final class StringUtil {
   public static boolean isNotEmpty(String str) {
     return !isEmpty(str);
   }
+
+  /**
+   * 拆分字符串
+   *
+   * @param str
+   * @param s
+   * @return
+   */
+  public static String[] splitString(String str, String s) {
+    return str.split(s);
+  }
 }

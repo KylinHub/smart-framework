@@ -24,5 +24,4 @@ public final class HelpLoader {
       ClassUtil.loadClass(cls.getName(), false);
     }
   }
-
 }
