@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
  */
 public final class JsonUtil {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(ClassUtil.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(JsonUtil.class);
 
   private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 

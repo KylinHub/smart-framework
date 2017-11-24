@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
  */
 public final class CodeUtil {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(ClassUtil.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(CodeUtil.class);
 
   /**
    * 将URL编码

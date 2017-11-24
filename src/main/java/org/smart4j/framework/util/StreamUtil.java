@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
  */
 public final class StreamUtil {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(ClassUtil.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(StreamUtil.class);
 
   /**
    * 从输入流中获取字符串
