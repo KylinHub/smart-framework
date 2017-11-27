@@ -10,7 +10,7 @@ import net.sf.cglib.proxy.MethodProxy;
  * Created by 28016 on 2017/11/24.
  * 代理管理器
  */
-public class proxyManager {
+public class ProxyManager {
 
   @SuppressWarnings("unchecked")
   public static <T> T createProxy(final Class<?> targetClass, final List<Proxy> proxyList) {
