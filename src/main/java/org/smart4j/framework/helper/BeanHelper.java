@@ -49,6 +49,7 @@ public final class BeanHelper {
 
   /**
    * 设置Bean实例
+   *
    * @param cls
    * @param obj
    */

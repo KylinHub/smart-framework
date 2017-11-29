@@ -11,15 +11,17 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.smart4j.framework.annotation.Aspect;
+import org.smart4j.framework.annotation.Service;
 import org.smart4j.framework.proxy.AspectProxy;
 import org.smart4j.framework.proxy.Proxy;
 import org.smart4j.framework.proxy.ProxyManager;
+import org.smart4j.framework.proxy.TransactionProxy;
 
 /**
  * Created by 28016 on 2017/11/27.
  * 方法拦截助手类
  */
-public class AopHelper {
+public final class AopHelper {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(AopHelper.class);
 
@@ -38,8 +40,24 @@ public class AopHelper {
     }
   }
 
+  /**
+   * 获取代理类与目标类映射
+   *
+   * @return
+   * @throws Exception
+   */
   private static Map<Class<?>, Set<Class<?>>> createProxyMap() throws Exception {
     Map<Class<?>, Set<Class<?>>> proxyMap = new HashMap<Class<?>, Set<Class<?>>>();
+    addAspectProxy(proxyMap);
+    return proxyMap;
+  }
+
+  /**
+   * 添加普通切面代理
+   * @param proxyMap
+   * @throws Exception
+   */
+  private static void addAspectProxy(Map<Class<?>, Set<Class<?>>> proxyMap) throws Exception {
     Set<Class<?>> proxyClassSet = ClassHelper.getClassSetBySuper(AspectProxy.class);
     for (Class<?> proxyClass : proxyClassSet) {
       if (proxyClass.isAnnotationPresent(Aspect.class)) {
@@ -48,9 +66,25 @@ public class AopHelper {
         proxyMap.put(proxyClass, targetClassSet);
       }
     }
-    return proxyMap;
   }
 
+  /**
+   * 添加事务代理
+   * @param proxyMap
+   * @throws Exception
+   */
+  private static void addTransactionProxy(Map<Class<?>, Set<Class<?>>> proxyMap) throws Exception {
+    Set<Class<?>> serviceClassSet = ClassHelper.getClassSetByAnnotation(Service.class);
+    proxyMap.put(TransactionProxy.class, serviceClassSet);
+  }
+
+  /**
+   * 带有Aspect注解的所有类
+   *
+   * @param aspect
+   * @return
+   * @throws Exception
+   */
   private static Set<Class<?>> createTargetClassSet(Aspect aspect) throws Exception {
     Set<Class<?>> targetClassSet = new HashSet<Class<?>>();
     Class<? extends Annotation> annotation = aspect.value();
@@ -60,6 +94,13 @@ public class AopHelper {
     return targetClassSet;
   }
 
+  /**
+   * 目标类与代理对象列表映射
+   *
+   * @param proxyMap
+   * @return
+   * @throws Exception
+   */
   private static Map<Class<?>, List<Proxy>> createTargetMap(Map<Class<?>, Set<Class<?>>> proxyMap)
       throws Exception {
     Map<Class<?>, List<Proxy>> targetMap = new HashMap<Class<?>, List<Proxy>>();
